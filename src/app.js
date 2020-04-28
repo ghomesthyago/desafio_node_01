@@ -15,9 +15,9 @@ app.get("/repositories", (request, response) => {
 });
 
 app.post("/repositories", (request, response) => {
-  const { title, url, techs } = request.body;
-
-  const repositorie = { id: uuid(), title, url, techs, likes: 0};
+  const { id, title, url, techs } = request.body;
+  //const repositorie = { id: uuid(), title, url, techs, likes: 0};
+  const repositorie = { id, title, url, techs, likes: 0};
   repositories.push(repositorie);
 
   return response.status(200).json(repositorie);
@@ -27,9 +27,9 @@ app.put("/repositories/:id", (request, response) => {
   const { title, url, techs } = request.body;
   const { id } = request.params;
 
-  if (!isUuid(id)) {
+  /*if (!isUuid(id)) {
     return response.status(400).json({ error: "Repositorie ID is not valid!!" });
-  };
+  };*/
 
   const repositorieIndex = repositories.findIndex(repositorie => repositorie.id === id);
 
@@ -55,9 +55,9 @@ app.put("/repositories/:id", (request, response) => {
 app.delete("/repositories/:id", (request, response) => {
   const { id } = request.params;
 
-  if (!isUuid(id)) {
+  /*if (!isUuid(id)) {
     return response.status(400).json({ error: "Repositorie ID is not valid!!" });
-  };
+  };*/
 
   const repositorieIndex = repositories.findIndex(repositorie => repositorie.id === id);
 
